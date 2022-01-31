@@ -22,12 +22,13 @@ export default function Home() {
     async function loadNFTs() {
         // provider, tokenCOntract, marketContract, data for out marketItems
 
-        // const provider = new ethers.providers.JsonRpcProvider("https://polygon-mumbai.infura.io/v3/0095c162fff84a3eb7540a929ed0dfa1");
+        const provider = new ethers.providers.JsonRpcProvider("https://polygon-mumbai.infura.io/v3/0095c162fff84a3eb7540a929ed0dfa1");
         // const provider = new ethers.providers.JsonRpcProvider("https://ropsten.infura.io/v3/0095c162fff84a3eb7540a929ed0dfa1");
-        const provider = new ethers.providers.JsonRpcProvider("");
+        // const provider = new ethers.providers.JsonRpcProvider("");
         const tokenContract = new ethers.Contract(nftAddress, NFT.abi, provider);
         const marketContract = new ethers.Contract(nftMarketAddress, ESMarket.abi, provider);
         const data = await marketContract.fetchMarketTokens();
+        console.log(await tokenContract.baseTokenURI())
 
         const items = await Promise.all(data.map(async i => {
             const tokenURI = await tokenContract.tokenURI(i.tokenId);

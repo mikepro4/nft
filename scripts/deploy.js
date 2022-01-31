@@ -18,6 +18,12 @@ async function main() {
   export const nftMarketAddress = "${nftMarket.address}"
   export const nftAddress = "${nft.address}"`;
 
+//   const Shape = await hre.ethers.getContractFactory("Shape");
+//   const shape = await Shape.deploy();
+//   await nftMarket.deployed()
+//   console.log("nft market deployed to: ", shape.address)
+
+
   let data = JSON.stringify(config);
   fs.writeFileSync("config.js", JSON.parse(data))
 }

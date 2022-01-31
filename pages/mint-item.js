@@ -81,8 +81,7 @@ export default function MintItem() {
         transaction = await contract.makeMarketItem(
             nftAddress,
             tokenId,
-            price,
-            {
+            price, {
                 value: listingPrice
             }
         )
